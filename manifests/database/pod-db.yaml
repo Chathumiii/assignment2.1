@@ -2,9 +2,14 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: pod-db
+  labels:
+    component: db
 spec:
   containers:
-  - name: pod-db
-    image: 244069240907.dkr.ecr.us-east-1.amazonaws.com/docker-containers-db:v0.1
-    ports:
-    - containerPort: 3306
+    - name: pod-db
+      image: 244069240907.dkr.ecr.us-east-1.amazonaws.com/docker-containers-db:v0.1
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+      ports:
+        - containerPort: 3306
