@@ -18,5 +18,12 @@ spec:
       containers:
       - name: replicaset-app
         image: 244069240907.dkr.ecr.us-east-1.amazonaws.com/docker-containers-app:v0.1
+        env:
+        - name: DBHOST
+          value: 10.96.137.138
+        - name: DBPWD
+          value: password
+        - name: DBPORT
+          value: "3306"
         ports:
         - containerPort: 8080
